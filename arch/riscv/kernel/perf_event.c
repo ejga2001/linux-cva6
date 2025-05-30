@@ -50,10 +50,10 @@ static DEFINE_PER_CPU(struct cpu_hw_events, cpu_hw_events);
 static const int riscv_hw_event_map[] = {
 	[PERF_COUNT_HW_CPU_CYCLES]		= RISCV_PMU_CYCLE,
 	[PERF_COUNT_HW_INSTRUCTIONS]		= RISCV_PMU_INSTRET,
-	[PERF_COUNT_HW_CACHE_REFERENCES]	= RISCV_PMU_MHPMCOUNTER3,
-	[PERF_COUNT_HW_CACHE_MISSES]		= RISCV_PMU_MHPMCOUNTER4,
-	[PERF_COUNT_HW_BRANCH_INSTRUCTIONS]	= RISCV_PMU_MHPMCOUNTER5,
-	[PERF_COUNT_HW_BRANCH_MISSES]		= RISCV_PMU_MHPMCOUNTER6,
+	[PERF_COUNT_HW_CACHE_REFERENCES]	= RISCV_OP_UNSUPP,
+	[PERF_COUNT_HW_CACHE_MISSES]		= RISCV_OP_UNSUPP,
+	[PERF_COUNT_HW_BRANCH_INSTRUCTIONS]	= RISCV_PMU_MHPMCOUNTER3,
+	[PERF_COUNT_HW_BRANCH_MISSES]		= RISCV_PMU_MHPMCOUNTER4,
 	[PERF_COUNT_HW_BUS_CYCLES]		= RISCV_OP_UNSUPP,
 };
 
@@ -63,8 +63,8 @@ static const int riscv_cache_event_map[PERF_COUNT_HW_CACHE_MAX]
 				      [PERF_COUNT_HW_CACHE_RESULT_MAX] = {
 					      [C(L1D)] = {
 						      [C(OP_READ)] = {
-							      [C(RESULT_ACCESS)] = RISCV_PMU_MHPMCOUNTER9,
-							      [C(RESULT_MISS)] = RISCV_PMU_MHPMCOUNTER10,
+							      [C(RESULT_ACCESS)] = RISCV_OP_UNSUPP,
+							      [C(RESULT_MISS)] = RISCV_OP_UNSUPP,
 						      },
 						      [C(OP_WRITE)] = {
 							      [C(RESULT_ACCESS)] = RISCV_OP_UNSUPP,
@@ -77,8 +77,8 @@ static const int riscv_cache_event_map[PERF_COUNT_HW_CACHE_MAX]
 					      },
 					      [C(L1I)] = {
 						      [C(OP_READ)] = {
-							      [C(RESULT_ACCESS)] = RISCV_PMU_MHPMCOUNTER7,
-							      [C(RESULT_MISS)] = RISCV_PMU_MHPMCOUNTER8,
+							      [C(RESULT_ACCESS)] = RISCV_OP_UNSUPP,
+							      [C(RESULT_MISS)] = RISCV_OP_UNSUPP,
 						      },
 						      [C(OP_WRITE)] = {
 							      [C(RESULT_ACCESS)] = RISCV_OP_UNSUPP,
@@ -105,8 +105,8 @@ static const int riscv_cache_event_map[PERF_COUNT_HW_CACHE_MAX]
 					      },
 					      [C(DTLB)] = {
 						      [C(OP_READ)] = {
-							      [C(RESULT_ACCESS)] =  RISCV_PMU_MHPMCOUNTER13,
-							      [C(RESULT_MISS)] =  RISCV_PMU_MHPMCOUNTER14,
+							      [C(RESULT_ACCESS)] =  RISCV_PMU_MHPMCOUNTER5,
+							      [C(RESULT_MISS)] =  RISCV_PMU_MHPMCOUNTER6,
 						      },
 						      [C(OP_WRITE)] = {
 							      [C(RESULT_ACCESS)] = RISCV_OP_UNSUPP,
@@ -119,8 +119,8 @@ static const int riscv_cache_event_map[PERF_COUNT_HW_CACHE_MAX]
 					      },
 					      [C(ITLB)] = {
 						      [C(OP_READ)] = {
-							      [C(RESULT_ACCESS)] = RISCV_PMU_MHPMCOUNTER11,
-							      [C(RESULT_MISS)] = RISCV_PMU_MHPMCOUNTER12,
+							      [C(RESULT_ACCESS)] = RISCV_OP_UNSUPP,
+							      [C(RESULT_MISS)] = RISCV_OP_UNSUPP,
 						      },
 						      [C(OP_WRITE)] = {
 							      [C(RESULT_ACCESS)] = RISCV_OP_UNSUPP,
